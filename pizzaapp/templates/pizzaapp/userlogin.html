@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<nav class="navbar navbar-light bg-light">
+	<a class="navbar-brand">Welcome To Pizza World!</a>
+<a class="btn btn-danger" href="/home/">Create Account!</a>
+</nav>
+<div class="container-fluid" style="position: relative;height: 900px;background-size: cover; background-image: url({%static "img/pizz2.jpg" %}); ">
+	<div style="padding: 20px;width: 400px;background-color: #fe6e00;display: block;margin: auto; position: absolute;margin-top: 250px;margin-left: 1000px">
+	<h1 style="color: white;text-align: center">User login</h1>
+	<form method="post" action="/customer/authenticate/">
+		{% csrf_token %}
+		<input type="text" style="margin-bottom: 15px" class="form-control" placeholder="username" name="username">
+		<input type="password" class="form-control" placeholder="password" name="password">
+		<input type="submit" style="display: block;margin: auto;margin-top: 10px" class="btn btn-success" name="">
+	</form>
+
+</div>
+
+{% for message in messages %}
+<p style="text-align: center;">{{message}}</p>
+{%endfor%}
+</div>
+{% endblock %}
